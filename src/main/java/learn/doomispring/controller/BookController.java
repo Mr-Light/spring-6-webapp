@@ -15,8 +15,11 @@ public class BookController {
 
     @RequestMapping("/books")
     public String getBooks(Model model){
+
+        // an attribute for the get request
         model.addAttribute("bookAttribute", bookService.findAll());
 
+        // has to be a name of a view (html template)
         return "books";
     }
 }

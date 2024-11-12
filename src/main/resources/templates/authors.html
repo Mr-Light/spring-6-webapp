@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Doomi Spring Learn</title>
+</head>
+<body>
+<h1>Author List</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+    </tr>
+    <tr th:each="elem : ${authorAttribute}">
+        <td th:text="${elem.id}">123</td>
+        <td th:text="${elem.firstName}"> Spring in Action</td>
+        <td th:text="${elem.lastName}"> Spring in Action</td>
+    </tr>
+</table>
+
+</body>
+</html>

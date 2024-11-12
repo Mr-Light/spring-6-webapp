@@ -2,8 +2,10 @@ package learn.doomispring.bootstrap;
 
 import learn.doomispring.domain.Author;
 import learn.doomispring.domain.Book;
+import learn.doomispring.domain.Publisher;
 import learn.doomispring.repositories.AuthorRepository;
 import learn.doomispring.repositories.BookRepository;
+import learn.doomispring.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +17,13 @@ public class BootstrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository,
+                         PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -55,6 +60,14 @@ public class BootstrapData implements CommandLineRunner {
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
         System.out.println("Book Count: " + bookRepository.count());
+
+        Publisher pb = new Publisher();
+        pb.setName("Penguin Publishing");
+        publisherRepository.save(pb);
+
+        System.out.println("Publisher count: " + publisherRepository.count());
+
+
 
     }
 }
